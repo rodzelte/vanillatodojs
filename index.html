@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="./output.css" />
+
+    <title>Todo</title>
+  </head>
+  <body>
+    <h1>Todo</h1>
+    <form action="add.php" method="post">
+      <input type="text" name="task" placeholder="Enter task" />
+      <button type="submit">Add</button>
+    </form>
+    <ul>
+      <li class="flex">
+        <h3>Task 1</h3>
+        <button class="bg-blue-500 m-1 rounded-2xl" type="submit">
+          Delete
+        </button>
+      </li>
+    </ul>
+
+    <script src="script.js" />
+  </body>
+</html>
