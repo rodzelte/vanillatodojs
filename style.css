@@ -1,1 +1,9 @@
 @import "tailwindcss";
+
+.delete-btn {
+  background-color: blue;
+}
+
+.lists li {
+  display: flex;
+}
