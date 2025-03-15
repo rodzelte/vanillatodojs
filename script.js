@@ -1,60 +1,62 @@
 const submit = document.querySelector("#submit");
 const input = document.querySelector("#input");
-const list = document.querySelector("#list");
+const ul = document.querySelector("#list");
 
-let todo = JSON.parse(localStorage.getItem("todo")) || []; 
+let list = JSON.parse(localStorage.getItem("list")) || [];
+addTask();
 
-document.addEventListener("DOMContentLoaded", renderList); 
-
-submit.addEventListener("click", () => {
-  const value = input.value.trim();
-  if (value) {
-    todo.push(value);
-    localStorage.setItem("todo", JSON.stringify(todo)); 
-    input.value = "";
-    renderList();
+submit.addEventListener("click", function () {
+  const trim = input.value.trim();
+  if (trim === "") {
+    errorMessage();
+    return;
   } else {
-    showErrorMessage();
+    list.push(trim);
+    input.value = "";
+    console.log(list);
+    addTask();
+    localStorage.setItem("list", JSON.stringify(list));
+
+    return;
   }
 });
 
-function renderList() {
-  list.innerHTML = ""; 
-
-  todo.forEach((item, index) => {
-    const li = document.createElement("li");
-    li.textContent = item;
-    li.style.display = "flex";  
-    li.style.alignItems = "center"; 
-
-    const deleteButton = document.createElement("button");
-    deleteButton.textContent = "Delete";
-    deleteButton.style.cursor = "pointer";
-    deleteButton.style.marginLeft = "10px";
-    deleteButton.style.backgroundColor = "red";
-
-    deleteButton.addEventListener("click", () => {
-      todo.splice(index, 1); 
-      localStorage.setItem("todo", JSON.stringify(todo)); 
-      renderList(); 
-    });
-
-    li.appendChild(deleteButton);
-    list.appendChild(li);
-  });
-}
-
-function showErrorMessage() {
-  const error = document.createElement("span");
-  error.textContent = "Please enter a value";
-  error.style.color = "red";
-  error.classList.add("error-message");
-
-  submit.appendChild(error);
-  submit.disabled = true;
+function errorMessage() {
+  const trim = input.value.trim();
+  if (!trim) {
+    const errorPing = document.createElement("span");
+    errorPing.setAttribute("id", "errorMessage");
+    errorPing.textContent = "Please enter a valid input";
+    errorPing.style.color = "red";
+    errorPing.style.fontSize = "12px";
+    document.querySelector("#input-form").appendChild(errorPing);
+  }
 
   setTimeout(() => {
-    error.remove();
-    submit.disabled = false;
-  }, 1000);
+    document.querySelector("#errorMessage").remove();
+  }, 2000);
+}
+
+function addTask() {
+  while (ul.firstChild) {
+    ul.removeChild(ul.firstChild);
+  }
+  list.forEach((li) => {
+    const liElement = document.createElement("li");
+    const dButton = document.createElement("button");
+    dButton.textContent = "Delete";
+    dButton.classList.add("clear-btn");
+
+    dButton.addEventListener("click", function () {
+      liElement.remove();
+      const index = list.indexOf(li);
+      if (index !== 1) {
+        list.splice(index, 1);
+      }
+    });
+    liElement.classList.add("todo-item");
+    liElement.textContent = li;
+    ul.appendChild(liElement);
+    liElement.appendChild(dButton);
+  });
 }

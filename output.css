@@ -1,4 +1,4 @@
-/*! tailwindcss v4.0.13 | MIT License | https://tailwindcss.com */
+/*! tailwindcss v4.0.14 | MIT License | https://tailwindcss.com */
 @layer theme, base, components, utilities;
 @layer theme {
   :root, :host {
@@ -7,9 +7,7 @@
     --font-mono: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono",
       "Courier New", monospace;
     --color-red-500: oklch(0.637 0.237 25.331);
-    --color-blue-500: oklch(0.623 0.214 259.815);
     --spacing: 0.25rem;
-    --radius-2xl: 1rem;
     --ease-in: cubic-bezier(0.4, 0, 1, 1);
     --ease-out: cubic-bezier(0, 0, 0.2, 1);
     --ease-in-out: cubic-bezier(0.4, 0, 0.2, 1);
@@ -339,9 +337,6 @@
       max-width: 96rem !important;
     }
   }
-  .m-1 {
-    margin: calc(var(--spacing) * 1);
-  }
   .box-border {
     box-sizing: border-box;
   }
@@ -476,9 +471,6 @@
   }
   .grow {
     flex-grow: 1;
-  }
-  .grow\! {
-    flex-grow: 1 !important;
   }
   .basis-auto {
     flex-basis: auto;
@@ -930,9 +922,6 @@
   .rounded {
     border-radius: 0.25rem;
   }
-  .rounded-2xl {
-    border-radius: var(--radius-2xl);
-  }
   .rounded-s {
     border-start-start-radius: 0.25rem;
     border-end-start-radius: 0.25rem;
@@ -1055,9 +1044,6 @@
   }
   .bg-\[var\(--my_variable\)\] {
     background-color: var(--my_variable);
-  }
-  .bg-blue-500 {
-    background-color: var(--color-blue-500);
   }
   .bg-red-500 {
     background-color: var(--color-red-500);
@@ -1720,9 +1706,6 @@
     --tw-outline-style: solid;
     outline-style: solid;
   }
-  .\[default\:\\u202F\$\{N\(\`\$\{u\}\`\)\}\] {
-    default: \u202F${N(`${u}`)};
-  }
   .backface-hidden {
     backface-visibility: hidden;
   }
@@ -1794,6 +1777,86 @@
   .transform-view {
     transform-box: view-box;
   }
+}
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: #f3f4f6;
+  font-family: Arial, sans-serif;
+}
+#input-form {
+  max-width: 400px;
+  width: 100%;
+  text-align: center;
+  background-color: white;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+}
+h1 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 16px;
+}
+.input-container {
+  display: flex;
+  gap: 8px;
+}
+#input {
+  flex: 1;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 6px;
+}
+#submit {
+  background-color: #3b82f6;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+#submit:hover {
+  background-color: #2563eb;
+}
+#list-container {
+  margin-top: 24px;
+  width: 100%;
+}
+#list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.todo-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+  padding: 12px;
+  border-bottom: 1px solid #ddd;
+}
+.todo-item h2 {
+  font-size: 1rem;
+  font-weight: normal;
+}
+.clear-btn {
+  background-color: #ef4444;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+}
+.clear-btn:hover {
+  background-color: #dc2626;
 }
 @property --tw-translate-x {
   syntax: "*";
